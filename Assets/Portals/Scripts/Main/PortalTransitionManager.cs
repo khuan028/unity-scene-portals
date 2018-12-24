@@ -68,6 +68,13 @@ public class PortalTransitionManager : MonoBehaviour {
 
 	private IEnumerator TeleportOperation (string scenePath, int id, Scene[] scenesToUnload) {
 
+		// Exit early if scene cannot be found in build settings
+		if(SceneUtility.GetBuildIndexByScenePath(scenePath) == -1) {
+			Debug.LogError("The scene " + scenePath + " could not be found in the build settings. This error happens fairly often and can be fixed easily. Just clear all scenes from your build setting, and drag the scenes back into the build settings.");
+			teleporting = false;
+			yield break;
+		}
+
 		if (OnTeleportStart != null) {
 			OnTeleportStart ();
 		}
