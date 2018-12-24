@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PortalTransitionManager : MonoBehaviour {
 
 	private bool teleporting = false;
+	public bool allowSceneActivation = true;
 
 	/// <summary>
 	/// Is a teleport operation occuring?
@@ -92,6 +93,9 @@ public class PortalTransitionManager : MonoBehaviour {
 
 			// Wait for next scene to finish loading
 			yield return new WaitUntil (() => nextSceneLoad.progress >= 0.9f);
+
+			// Wait until scene activation is allowed
+			yield return new WaitUntil(() => allowSceneActivation);
 
 			// Activate next scene
 			nextSceneLoad.allowSceneActivation = true;
