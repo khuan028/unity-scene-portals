@@ -9,7 +9,7 @@ public class ConvenientButtonsWindow : EditorWindow {
 
 	private static string key_sceneToLoad = "ConvenientButtonsWindow.sceneToLoad";
 
-	[MenuItem ("Tools/Convenient Buttons")]
+	[MenuItem ("Tools/Portals/Convenient Buttons")]
 	public static void ShowWindow () {
 		ConvenientButtonsWindow window = EditorWindow.GetWindow (typeof (ConvenientButtonsWindow), false, "Convenient", true) as ConvenientButtonsWindow;
 		if(EditorPrefs.HasKey(key_sceneToLoad)) {

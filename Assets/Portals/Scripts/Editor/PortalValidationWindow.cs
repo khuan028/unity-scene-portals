@@ -26,7 +26,7 @@ public class PortalValidationWindow : EditorWindow {
 	public bool showEverythingIsGood = false;
 	public bool checkForDisconnectedPortals = false;
 
-	[MenuItem ("Tools/Validate Portal")]
+	[MenuItem ("Tools/Portals/Validation")]
 	public static void ShowWindow () {
 		PortalValidationWindow window = EditorWindow.GetWindow (typeof (PortalValidationWindow), false, "Validate Portal", true) as PortalValidationWindow;
 		window.showEverythingIsGood = false;
