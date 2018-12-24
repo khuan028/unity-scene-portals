@@ -34,14 +34,24 @@ public class PortalTransitionManager : MonoBehaviour {
 	}
 
 	/// <summary>
-	/// An event that is raised when a teleportation operation starts
+	/// A delegate with scene path info
 	/// </summary>
-	public System.Action OnTeleportStart;
+	/// <param name="scenePath">scene path</param>
+	public delegate void SceneTransitionDelegate(string scenePath);
+
+	/// <summary>
+	/// An event that is raised when a teleportation operation starts
+	/// 
+	/// (The scene path is the next scene being loaded)
+	/// </summary>
+	public SceneTransitionDelegate OnTeleportStart;
 
 	/// <summary>
 	/// An event that is raised when a teleportation operation finishes
+	/// 
+	/// (The scene path is the scene that has finished loading)
 	/// </summary>
-	public System.Action OnTeleportFinish;
+	public SceneTransitionDelegate OnTeleportFinish;
 
 	void Awake () {
 		if (_ins == null) {
@@ -79,7 +89,7 @@ public class PortalTransitionManager : MonoBehaviour {
 		}
 
 		if (OnTeleportStart != null) {
-			OnTeleportStart ();
+			OnTeleportStart (scenePath);
 		}
 
 		// Change scenes if necessary
@@ -123,7 +133,7 @@ public class PortalTransitionManager : MonoBehaviour {
 		teleporting = false;
 
 		if (OnTeleportFinish != null) {
-			OnTeleportFinish ();
+			OnTeleportFinish (scenePath);
 		}
 	}
 
