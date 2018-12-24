@@ -26,6 +26,9 @@ public class PortalTransitionManager : MonoBehaviour {
 	/// <value></value>
 	public static PortalTransitionManager Instance {
 		get {
+			if(_ins == null) {
+				Debug.LogError("Did you forget to load the Persistent scene additively?");
+			}
 			return _ins;
 		}
 	}
